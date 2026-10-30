@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 39, "left": -144.6, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -99.2,
+      "left": 178.4,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 107.1, "left": -368.9, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 125, "left": 230.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 92.4, "left": 426.2, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -160.8,
+      "left": -161.4,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -166.8,
+      "left": 32.6,
+      "attrs": { "color": "cyan" }
+    }
+  ],
+  "connections": [
+    [ "lcd1:GND", "uno:GND.1", "black", [ "h0" ] ],
+    [ "uno:A5.2", "lcd1:SCL", "green", [ "v0" ] ],
+    [ "uno:A4.2", "lcd1:SDA", "violet", [ "v0" ] ],
+    [ "uno:5V", "relay1:VCC", "red", [ "v105.5", "h167", "v-192" ] ],
+    [ "lcd1:VCC", "relay1:VCC", "red", [ "h-38.4", "v201.7", "h48", "v0" ] ],
+    [ "uno:GND.2", "relay1:GND", "black", [ "v86.3", "h176.7", "v-163.2" ] ],
+    [ "uno:12", "relay1:IN", "yellow", [ "v-48", "h144.5", "v163.2" ] ],
+    [ "relay1:GND", "relay1:NO", "black", [ "h-9.6", "v66.8", "h153.6" ] ],
+    [ "relay1:COM", "led1:C", "green", [ "h0" ] ],
+    [ "uno:5V", "led1:A", "red", [ "v76.7", "h445.4" ] ],
+    [ "ultrasonic1:GND", "uno:GND.3", "black", [ "v96", "h306" ] ],
+    [ "ultrasonic1:VCC", "uno:5V", "red", [ "v134.4", "h307.2" ] ],
+    [ "ultrasonic1:TRIG", "uno:9", "green", [ "v67.2", "h114.8", "v-288", "h192" ] ],
+    [ "ultrasonic1:ECHO", "uno:10", "green", [ "v115.2", "h114.4", "v-326.4", "h172.8" ] ],
+    [ "led2:A", "uno:13", "cyan", [ "v28.8", "h-67.2" ] ],
+    [ "led2:C", "uno:GND.1", "cyan", [ "v19.2", "h-76.4" ] ],
+    [ "bz1:2", "uno:11", "black", [ "v86.4", "h124.4" ] ],
+    [ "bz1:1", "uno:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
